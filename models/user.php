@@ -1,7 +1,8 @@
 <?php
 include "./services/db.php";
 
-function createUser($role_id, $full_name, $email, $password, $phone) {
+function createUser($role_id, $full_name, $email, $password, $phone)
+{
     $db = getDBConnection();
     $query = "INSERT INTO users(role_id, full_name, email, password, phone) VALUES (?, ?, ?, ?, ?)";
 
@@ -10,7 +11,8 @@ function createUser($role_id, $full_name, $email, $password, $phone) {
     return $stmt->execute();
 }
 
-function getAllUser() {
+function getAllUser()
+{
     $db = getDBConnection();
     $query = "SELECT * FROM users";
 
@@ -19,9 +21,10 @@ function getAllUser() {
     return $stmt->get_result();
 }
 
-function getUserById($user_id) {
+function getUserById($user_id)
+{
     $db = getDBConnection();
-    $query = "SELECT * FROM users WHERE id = ?";
+    $query = "SELECT * FROM users WHERE user_id = ?";
 
     $stmt = $db->prepare($query);
     $stmt->bind_param("s", $user_id);
@@ -29,18 +32,20 @@ function getUserById($user_id) {
     return $stmt->get_result();
 }
 
-function updateUserById($user_id, $role_id, $full_name, $email, $password, $phone) {
+function updateUserById($user_id, $role_id, $full_name, $email, $password, $phone)
+{
     $db = getDBConnection();
-    $query = "UPDATE siswa SET role_id = ?, full_name = ?, email = ?, password = ?, phone = ? WHERE id = ?";
+    $query = "UPDATE siswa SET role_id = ?, full_name = ?, email = ?, password = ?, phone = ? WHERE user_id = ?";
 
     $stmt = $db->prepare($query);
     $stmt->bind_param("ssssss", $role_id, $full_name, $email, $password, $phone, $user_id);
     return $stmt->execute();
 }
 
-function deleteUserById($user_id) {
+function deleteUserById($user_id)
+{
     $db = getDBConnection();
-    $query = "DELETE FROM users WHERE id = ?";
+    $query = "DELETE FROM users WHERE user_id = ?";
 
     $stmt = $db->prepare($query);
     $stmt->bind_param("s", $user_id);
