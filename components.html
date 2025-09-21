@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serene - Design System</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Crimson+Text:wght@400;600&family=Inter:wght@300;400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Core Colors */
+            --claude-bg: #FAF9F6;
+            --claude-primary: #D4A574;
+            --claude-secondary: #C19660;
+            --claude-accent: #8B7355;
+            --claude-text: #3D3D3D;
+            --claude-text-light: #6B6B6B;
+            --claude-border: #E8E5DF;
+            --claude-hover: #F5F2EC;
+            --claude-gradient: linear-gradient(135deg, #D4A574 0%, #C19660 100%);
+            
+            /* Semantic Colors */
+            --success: #7FB069;
+            --warning: #E6AA68;
+            --error: #CA6A69;
+            --info: #6B9ECA;
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 4px rgba(139, 115, 85, 0.08);
+            --shadow-md: 0 4px 15px rgba(139, 115, 85, 0.12);
+            --shadow-lg: 0 10px 30px rgba(139, 115, 85, 0.15);
+            
+            /* Spacing */
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-2xl: 3rem;
+            
+            /* Border Radius */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 20px;
+            --radius-full: 50px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--claude-bg);
+            color: var(--claude-text);
+            line-height: 1.6;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 260px;
+            height: 100vh;
+            background: white;
+            border-right: 1px solid var(--claude-border);
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            padding: 2rem 1.5rem;
+            border-bottom: 1px solid var(--claude-border);
+        }
+
+        .sidebar-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            background: var(--claude-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .sidebar-subtitle {
+            font-size: 0.875rem;
+            color: var(--claude-text-light);
+            margin-top: 0.25rem;
+        }
+
+        .sidebar-nav {
+            padding: 1.5rem 0;
+        }
+
+        .nav-item {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: var(--claude-text);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .nav-item:hover {
+            background: var(--claude-hover);
+            color: var(--claude-accent);
+        }
+
+        .nav-item.active {
+            background: var(--claude-hover);
+            color: var(--claude-accent);
+        }
+
+        .nav-item.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: var(--claude-primary);
+        }
+
+        .main-content {
+            margin-left: 260px;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        /* Typography Section */
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--claude-accent);
+        }
+
+        .section-description {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.2rem;
+            color: var(--claude-text-light);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .subsection {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .subsection-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--claude-text);
+        }
+
+        /* Typography Samples */
+        .h1-sample {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .h2-sample {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.25rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .h3-sample {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .h4-sample {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .body-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .caption-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.875rem;
+            color: var(--claude-text-light);
+        }
+
+        /* Color Swatches */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .color-swatch {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s ease;
+        }
+
+        .color-swatch:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .swatch-color {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .swatch-info {
+            background: white;
+            padding: 0.75rem;
+        }
+
+        .swatch-name {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--claude-text);
+        }
+
+        .swatch-value {
+            font-size: 0.75rem;
+            color: var(--claude-text-light);
+            font-family: 'Monaco', 'Courier New', monospace;
+        }
+
+        /* Buttons */
+        .button-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: var(--radius-full);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--claude-gradient);
+            color: white;
+            box-shadow: 0 4px 15px rgba(212, 165, 116, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(212, 165, 116, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--claude-accent);
+            border: 2px solid var(--claude-border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--claude-hover);
+            border-color: var(--claude-primary);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--claude-accent);
+            border: none;
+        }
+
+        .btn-ghost:hover {
+            background: var(--claude-hover);
+        }
+
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+        }
+
+        .btn-lg {
+            padding: 1rem 2rem;
+            font-size: 1.125rem;
+        }
+
+        /* Form Elements */
+        .form-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--claude-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input {
+            padding: 0.75rem;
+            border: 1px solid var(--claude-border);
+            border-radius: var(--radius-md);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            background: white;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--claude-primary);
+            box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .form-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236B6B6B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 1em;
+            padding-right: 2.5rem;
+        }
+
+        .checkbox-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .checkbox {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--claude-primary);
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-image {
+            height: 180px;
+            background: var(--claude-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.125rem;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .card-title {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-text {
+            color: var(--claude-text-light);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        /* Badges */
+        .badge-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            font-weight: 500;
+            display: inline-block;
+        }
+
+        .badge-primary {
+            background: var(--claude-hover);
+            color: var(--claude-accent);
+        }
+
+        .badge-success {
+            background: rgba(127, 176, 105, 0.1);
+            color: var(--success);
+        }
+
+        .badge-warning {
+            background: rgba(230, 170, 104, 0.1);
+            color: var(--warning);
+        }
+
+        .badge-error {
+            background: rgba(202, 106, 105, 0.1);
+            color: var(--error);
+        }
+
+        .badge-info {
+            background: rgba(107, 158, 202, 0.1);
+            color: var(--info);
+        }
+
+        /* Alerts */
+        .alert {
+            padding: 1rem 1.25rem;
+            border-radius: var(--radius-md);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: start;
+            gap: 0.75rem;
+        }
+
+        .alert-icon {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+        }
+
+        .alert-default {
+            background: var(--claude-hover);
+            color: var(--claude-text);
+            border-left: 4px solid var(--claude-primary);
+        }
+
+        .alert-success {
+            background: rgba(127, 176, 105, 0.1);
+            color: var(--success);
+            border-left: 4px solid var(--success);
+        }
+
+        .alert-warning {
+            background: rgba(230, 170, 104, 0.1);
+            color: var(--warning);
+            border-left: 4px solid var(--warning);
+        }
+
+        .alert-error {
+            background: rgba(202, 106, 105, 0.1);
+            color: var(--error);
+            border-left: 4px solid var(--error);
+        }
+
+        /* Spacing Examples */
+        .spacing-example {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .spacing-box {
+            background: var(--claude-primary);
+            opacity: 0.2;
+            border-radius: var(--radius-sm);
+        }
+
+        .spacing-label {
+            font-size: 0.875rem;
+            color: var(--claude-text-light);
+            min-width: 80px;
+        }
+
+        /* Code Block */
+        .code-block {
+            background: #2D2D2D;
+            color: #F8F8F2;
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.875rem;
+            overflow-x: auto;
+            margin-top: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+                position: fixed;
+                top: 1rem;
+                left: 1rem;
+                z-index: 101;
+                background: white;
+                border: 1px solid var(--claude-border);
+                border-radius: var(--radius-md);
+                padding: 0.5rem;
+                cursor: pointer;
+            }
+        }
+
+        .menu-toggle {
+            display: none;
+        }
+
+        /* Divider */
+        .divider {
+            height: 1px;
+            background: var(--claude-border);
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Menu Toggle -->
+    <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">Serene</div>
+            <div class="sidebar-subtitle">Design System</div>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#typography" class="nav-item active">Typography</a>
+            <a href="#colors" class="nav-item">Colors</a>
+            <a href="#buttons" class="nav-item">Buttons</a>
+            <a href="#forms" class="nav-item">Forms</a>
+            <a href="#cards" class="nav-item">Cards</a>
+            <a href="#badges" class="nav-item">Badges</a>
+            <a href="#alerts" class="nav-item">Alerts</a>
+            <a href="#spacing" class="nav-item">Spacing</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Typography Section -->
+        <section id="typography" class="section">
+            <h1 class="section-title">Typography</h1>
+            <p class="section-description">Thoughtfully crafted typography combining elegant serifs with clean sans-serif for optimal readability and hierarchy.</p>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">Type Scale</h3>
+                <h1 class="h1-sample">Heading 1 - Playfair Display</h1>
+                <h2 class="h2-sample">Heading 2 - Playfair Display</h2>
+                <h3 class="h3-sample">Heading 3 - Crimson Text</h3>
+                <h4 class="h4-sample">Heading 4 - Inter</h4>
+                <p class="body-text">Body text uses Inter for optimal readability across all devices. This clean sans-serif provides excellent clarity while maintaining a warm, approachable feel that aligns with our design principles.</p>
+                <p class="caption-text">Caption text for supplementary information</p>
+            </div>
+        </section>
+
+        <!-- Colors Section -->
+        <section id="colors" class="section">
+            <h1 class="section-title">Colors</h1>
+            <p class="section-description">A warm, sophisticated palette inspired by natural tones and thoughtful design.</p>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">Primary Palette</h3>
+                <div class="color-grid">
+                    <div class="color-swatch">
+                        <div class="swatch-color" style="background: #FAF9F6; color: #3D3D3D;">Aa</div>
+                        <div class="swatch-info">
+                            <div class="swatch-name">Background</div>
+                            <div class="swatch-value">#FAF9F6</div>
+                        </div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="swatch-color" style="background: #D4A574;">Aa</div>
+                        <div class="swatch-info">
+                            <div class="swatch-name">Primary</div>
+                            <div class="swatch-value">#D4A574</div>
+                        </div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="swatch-color" style="background: #C19660;">Aa</div>
+                        <div class="swatch-info">
+                            <div class="swatch-name">Secondary</div>
+                            <div class="swatch-value">#C19660</div>
+                        </div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="swatch-color" style="background: #8B7355;">Aa</div>
+                        <div class="swatch-info">
+                            <div class="swatch-name">Accent</div>
+                            <div class="swatch-value">#8B7355</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection-title">Semantic Colors</h3>
+                <div class="color-grid">
+                    <div class="color-swatch">
+                        <div class="swatch-color" style="background: #7FB069;">✓</div>
+                        <div class="swatch-info">
+                            <div class="swatch-name">Success</div>
+                            <div class="swatch-value">#7FB069</div>
+                        </div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="swatch-color" style="background: #E6AA68;">!</div>
+                        <div class="swatch-info">
+                            <div class="swatch-name">Warning</div>
+                            <div class="swatch-value">#E6AA68</div>
+                        </div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="swatch-color" style="background: #CA6A69;">×</div>
+                        <div class="swatch-info">
+                            <div class="swatch-name">Error</div>
+                            <div class="swatch-value">#CA6A69</div>
+                        </div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="swatch-color" style="background: #6B9ECA;">i</div>
+                        <div class="swatch-info">
+                            <div class="swatch-name">Info</div>
+                            <div class="swatch-value">#6B9ECA</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Buttons Section -->
+        <section id="buttons" class="section">
+            <h1 class="section-title">Buttons</h1>
+            <p class="section-description">Interactive elements designed for clarity and purposeful action.</p>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">Button Variants</h3>
+                <div class="button-grid">
+                    <button class="btn btn-primary">Primary Button</button>
+                    <button class="btn btn-secondary">Secondary Button</button>
+                    <button class="btn btn-ghost">Ghost Button</button>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection-title">Button Sizes</h3>
+                <div class="button-grid">
+                    <button class="btn btn-primary btn-sm">Small</button>
+                    <button class="btn btn-primary">Default</button>
+                    <button class="btn btn-primary btn-lg">Large</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Forms Section -->
+        <section id="forms" class="section">
+            <h1 class="section-title">Form Elements</h1>
+            <p class="section-description">Clean, accessible form components for seamless user interaction.</p>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">Input Fields</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">Text Input</label>
+                        <input type="text" class="form-input" placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email Input</label>
+                        <input type="email" class="form-input" placeholder="email@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Select Dropdown</label>
+                        <select class="form-input form-select">
+                            <option>Choose an option</option>
+                            <option>Option 1</option>
+                            <option>Option 2</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Textarea</label>
+                        <textarea class="form-input form-textarea" placeholder="Enter your message"></textarea>
+                    </div>
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" class="checkbox" id="check1">
+                        <label for="check1">I agree to the terms</label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cards Section -->
+        <section id="cards" class="section">
+            <h1 class="section-title">Cards</h1>
+            <p class="section-description">Content containers that organize information in digestible units.</p>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-image">Image Placeholder</div>
+                    <div class="card-body">
+                        <h3 class="card-title">Card Title</h3>
+                        <p class="card-text">This is a sample card component with an image placeholder and content area.</p>
+                        <button class="btn btn-primary btn-sm">Learn More</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image">Image Placeholder</div>
+                    <div class="card-body">
+                        <h3 class="card-title">Another Card</h3>
+                        <p class="card-text">Cards are perfect for displaying grouped content in a clean, organized manner.</p>
+                        <button class="btn btn-secondary btn-sm">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Badges Section -->
+        <section id="badges" class="section">
+            <h1 class="section-title">Badges</h1>
+            <p class="section-description">Small indicators for status, categories, or supplementary information.</p>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">Badge Variants</h3>
+                <div class="badge-group">
+                    <span class="badge badge-primary">Primary</span>
+                    <span class="badge badge-success">Success</span>
+                    <span class="badge badge-warning">Warning</span>
+                    <span class="badge badge-error">Error</span>
+                    <span class="badge badge-info">Info</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Alerts Section -->
+        <section id="alerts" class="section">
+            <h1 class="section-title">Alerts</h1>
+            <p class="section-description">Contextual feedback messages for user actions and system states.</p>
+            
+            <div class="subsection">
+                <div class="alert alert-default">
+                    <span class="alert-icon">ℹ️</span>
+                    <div>This is a default alert message with helpful information.</div>
+                </div>
+                <div class="alert alert-success">
+                    <span class="alert-icon">✓</span>
+                    <div>Success! Your booking has been confirmed.</div>
+                </div>
+                <div class="alert alert-warning">
+                    <span class="alert-icon">⚠️</span>
+                    <div>Warning: Limited availability for selected dates.</div>
+                </div>
+                <div class="alert alert-error">
+                    <span class="alert-icon">✕</span>
+                    <div>Error: Please check your payment information.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Spacing Section -->
+        <section id="spacing" class="section">
+            <h1 class="section-title">Spacing</h1>
+            <p class="section-description">Consistent spacing system for harmonious layouts.</p>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">Spacing Scale</h3>
+                <div class="spacing-example">
+                    <span class="spacing-label">XS (4px)</span>
+                    <div class="spacing-box" style="width: 100px; height: 4px;"></div>
+                </div>
+                <div class="spacing-example">
+                    <span class="spacing-label">SM (8px)</span>
+                    <div class="spacing-box" style="width: 100px; height: 8px;"></div>
+                </div>
+                <div class="spacing-example">
+                    <span class="spacing-label">MD (16px)</span>
+                    <div class="spacing-box" style="width: 100px; height: 16px;"></div>
+                </div>
+                <div class="spacing-example">
+                    <span class="spacing-label">LG (24px)</span>
+                    <div class="spacing-box" style="width: 100px; height: 24px;"></div>
+                </div>
+                <div class="spacing-example">
+                    
