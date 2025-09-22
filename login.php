@@ -1,3 +1,9 @@
+<?php
+include "utils/permission_check.php";
+
+isLoggedIn();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
