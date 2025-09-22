@@ -1,5 +1,5 @@
 <?php
-include "./services/db.php";
+include dirname(__DIR__) . "/services/db.php";
 
 function createUser($role_id, $full_name, $email, $password, $phone)
 {
@@ -17,6 +17,17 @@ function getAllUser()
     $query = "SELECT * FROM users";
 
     $stmt = $db->prepare($query);
+    $stmt->execute();
+    return $stmt->get_result();
+}
+
+function getUserByEmail($email)
+{
+    $db = getDBConnection();
+    $query = "SELECT * FROM users WHERE email = ?";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("s", $email);
     $stmt->execute();
     return $stmt->get_result();
 }
