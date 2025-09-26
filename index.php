@@ -30,7 +30,7 @@ session_start();
     <div class="hero-container fadeInUp">
       <h1 class="brand-name"><?= htmlspecialchars($_SESSION['full_name'] ?? "Brookly") ?></h1>
       <p class="tagline fadeIn-05">Thoughtful stays, seamless booking</p>
-      <a href="login.php" class="cta-button fadeIn-08">Begin Your Journey</a>
+      <a href="register.php" class="cta-button fadeIn-08">Begin Your Journey</a>
     </div>
 
   </main>

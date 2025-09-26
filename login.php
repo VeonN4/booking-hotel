@@ -1,7 +1,11 @@
 <?php
-include "utils/permission_check.php";
+include dirname(__FILE__) . "/controllers/authController.php";
+include dirname(__FILE__) . "/utils/permission_check.php";
 
-isLoggedIn();
+if (isLoggedIn()) {
+    header("Location: index.php");
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +22,7 @@ isLoggedIn();
     <!-- Main Content -->
     <main>
         <section id="forms" class="section">
-            <form action="controllers/authController.php?action=signin" method="post">
+            <form action="?action=signin" method="post">
 
                 <h1 class="section-title">Sign-in</h1>
 
@@ -32,7 +36,7 @@ isLoggedIn();
                             <label class="form-label" for="password">Password</label>
                             <input type="password" class="form-input" id="password" name="password" placeholder="Enter your password">
                         </div>
-                        <button type="submit">Submit</button>
+                        <button type="submit" name="submit" value="signin">Submit</button>
                     </div>
                 </div>
             </form>

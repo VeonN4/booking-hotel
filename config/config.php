@@ -9,4 +9,8 @@ function getDBConfig() {
     ];
 }
 
+function getAbsolutePath(){
+    return __DIR__;
+}
+
 ?>
