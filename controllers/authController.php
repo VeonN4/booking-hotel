@@ -9,12 +9,12 @@ switch ($_GET['action'] ?? null) {
         $password = htmlspecialchars($_POST['password']) ?? null;
 
         if ($email === null) {
-            header("Location: " . dirname(__DIR__) . "index.php");
+            header("Location: index.php");
             break;
         }
 
         if ($password === null) {
-            header("Location: " . dirname(__DIR__) . "index.php");
+            header("Location: index.php");
             break;
         }
 
@@ -25,7 +25,7 @@ switch ($_GET['action'] ?? null) {
             $_SESSION['user_id'] = $user['user_id'];
             $_SESSION['full_name'] = $user['full_name'];
 
-            header("Location: " . dirname(__DIR__) . "index.php");
+            header("Location: index.php");
             exit;
         }
 
@@ -38,22 +38,22 @@ switch ($_GET['action'] ?? null) {
         $phone = htmlspecialchars($_POST['phone']) ?? null;
 
         if ($full_name === null) {
-            header("Location: " . dirname(__DIR__) . "index.php");
+            header("Location: index.php");
             break;
         }
 
         if ($email === null) {
-            header("Location: " . dirname(__DIR__) . "index.php");
+            header("Location: index.php");
             break;
         }
 
         if ($password === null) {
-            header("Location: " . dirname(__DIR__) . "index.php");
+            header("Location: index.php");
             break;
         }
 
         if ($phone === null) {
-            header("Location: " . dirname(__DIR__) . "index.php");
+            header("Location: index.php");
             break;
         }
 
