@@ -5,8 +5,8 @@ include dirname(__DIR__) . "/models/user.php";
 switch ($_GET['action'] ?? null) {
     case 'signin':
         session_start();
-        $email = htmlspecialchars($_POST['full_name']) ?? null;
-        $password = htmlspecialchars($_POST['full_name']) ?? null;
+        $email = htmlspecialchars($_POST['email']) ?? null;
+        $password = htmlspecialchars($_POST['password']) ?? null;
 
         if ($email === null) {
             header("Location: " . dirname(__DIR__) . "index.php");

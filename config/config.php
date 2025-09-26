@@ -8,9 +8,4 @@ function getDBConfig() {
         'db_table' => 'app_booking_hotel'
     ];
 }
-
-function getAbsolutePath(){
-    return __DIR__;
-}
-
 ?>
