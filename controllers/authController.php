@@ -1,10 +1,10 @@
 <?php
 include dirname(__DIR__) . "/models/user.php";
 
+session_start();
 
 switch ($_GET['action'] ?? null) {
     case 'signin':
-        session_start();
         $email = htmlspecialchars($_POST['email']) ?? null;
         $password = htmlspecialchars($_POST['password']) ?? null;
 
@@ -59,7 +59,7 @@ switch ($_GET['action'] ?? null) {
 
         $hash_password = password_hash($password, PASSWORD_BCRYPT);
 
-        createUser("1" , $full_name, $email, $password, $phone);
+        createUser("1" , $full_name, $email, $hash_password, $phone);
 
         header("location: login.php");
         exit;

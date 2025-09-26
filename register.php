@@ -2,7 +2,7 @@
 include dirname(__FILE__) . "/utils/permission_check.php";
 include dirname(__FILE__) . "/controllers/authController.php";
 
-if (isLoggedIn()) { 
+if (!isLoggedIn()) { 
     header("Location: index.php");
     exit;
 }
@@ -44,6 +44,7 @@ if (isLoggedIn()) {
                             <label class="form-label" for="phone">Phone Number</label>
                             <input type="tel" class="form-input" id="phone" name="phone" placeholder="Enter your phone number">
                         </div>
+                        <div><a href="login.php">Already have an account?</a></div>
                         <button type="submit" name="submit" value="signup">Submit</button>
                     </div>
                 </div>

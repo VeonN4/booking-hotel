@@ -31,6 +31,7 @@ session_start();
       <h1 class="brand-name"><?= htmlspecialchars($_SESSION['full_name'] ?? "Brookly") ?></h1>
       <p class="tagline fadeIn-05">Thoughtful stays, seamless booking</p>
       <a href="register.php" class="cta-button fadeIn-08">Begin Your Journey</a>
+      <?= var_dump($_SESSION) ?>
     </div>
 
   </main>
