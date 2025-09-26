@@ -2,8 +2,8 @@
 function isRole($role) {
     if (!$_SESSION['role_id'] === $role) {
         view("error/404");
-        exit;
         return false;
+        exit;
     }
 
     return true;
@@ -11,8 +11,7 @@ function isRole($role) {
 
 function isLoggedIn() {
     if (isset($_SESSION)) {
-        header("Location: index.php");
-        return false;
+        return true;
     }
-    return true;
+    return false;
 }
