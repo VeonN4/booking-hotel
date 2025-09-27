@@ -2,7 +2,7 @@
 include dirname(__FILE__) . "/utils/permission_check.php";
 include dirname(__FILE__) . "/controllers/authController.php";
 
-if (!isLoggedIn()) { 
+if (isLoggedIn()) {
     header("Location: index.php");
     exit;
 }
