@@ -51,7 +51,7 @@ if (empty($hotel_data)) {
                     <td><?= $value['capacity'] ?></td>
                     <td><?= $value['status'] ?></td>
                     <td>
-                        <a href=""></a>
+                        <a href="payment.php?id=<?= $value['room_id'] ?>">Reserve</a>
                     </td>
                 </tr>
             <?php endforeach ?>
