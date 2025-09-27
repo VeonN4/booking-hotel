@@ -32,6 +32,17 @@ function getRoomById($room_id)
     return $stmt->get_result();
 }
 
+function getRoomByHotelId($hotel_id)
+{
+    $db = getDBConnection();
+    $query = "SELECT * FROM rooms WHERE hotel_id = ?";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("s", $hotel_id);
+    $stmt->execute();
+    return $stmt->get_result();
+}
+
 function updateRoomById($room_id, $hotel_id, $room_number, $type, $price, $capacity, $status)
 {
     $db = getDBConnection();
