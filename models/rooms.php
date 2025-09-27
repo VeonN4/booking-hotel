@@ -1,5 +1,5 @@
 <?php
-include "./services/db.php";
+require_once dirname(__DIR__) . "/services/db.php";
 
 function createRoom($hotel_id, $room_number, $type, $price, $capacity, $status)
 {

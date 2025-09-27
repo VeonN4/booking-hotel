@@ -1,5 +1,5 @@
 <?php
-include "./services/db.php";
+require_once dirname(__DIR__) . "/services/db.php";
 
 function createBooking($user_id, $room_id, $check_in, $check_out, $status, $total_price)
 {

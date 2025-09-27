@@ -1,5 +1,5 @@
 <?php
-include "./services/db.php";
+require_once dirname(__DIR__) . "/services/db.php";
 
 function createRole($role_name)
 {

@@ -1,5 +1,5 @@
 <?php
-include dirname(__DIR__) . "/services/db.php";
+require_once dirname(__DIR__) . "/services/db.php";
 
 function createUser($role_id, $full_name, $email, $password, $phone)
 {
