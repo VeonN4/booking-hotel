@@ -14,6 +14,10 @@ if (empty($id)) {
     header("Location: hotels.php");
 }
 
+if (empty($_GET['method'])) {
+    header("Location: hotels.php");
+}
+
 if (empty($room_data)) {
     header("Location: hotels.php");
 }
@@ -30,6 +34,8 @@ if (empty($room_data)) {
 </head>
 
 <body>
+    <h1></h1>
+
     <form action="" method="post">
         <div>
             <label for="email">Email</label>

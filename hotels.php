@@ -39,7 +39,7 @@ if ($action !== "listHotel") {
         <?php foreach ($hotel_data as $key => $value): ?>
             <div class="card">
                 <p><?= $value['name'] ?></p>
-                <a href="<?= 'detail-hotel.php?id=' . $value['hotel_id'] ?>">Open</a>
+                <a href="<?= 'detail-hotel.php?method=hotel&id=' . $value['hotel_id'] ?>">Open</a>
             </div>
         <?php endforeach ?>
     </div>
