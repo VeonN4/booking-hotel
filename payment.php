@@ -5,8 +5,6 @@ require_once "utils/permission_check.php";
 require_once "controllers/roomsController.php";
 require_once "controllers/paymentController.php";
 
-session_start();
-
 if (!isLoggedIn()) {
     view("error/create_account_first");
     exit;

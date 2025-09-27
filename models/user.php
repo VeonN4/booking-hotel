@@ -36,7 +36,8 @@ function removeUserBalance($user_id, $balance)
 
     $stmt = $db->prepare($query);
     $stmt->bind_param("isi", $balance, $user_id, $balance);
-    return $stmt->execute();
+    $stmt->execute();
+    return $stmt->affected_rows;
 }
 
 function getAllUser()
