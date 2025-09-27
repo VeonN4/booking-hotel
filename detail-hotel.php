@@ -1,5 +1,6 @@
 <?php
-include "controllers/hotelsController.php";
+require_once "controllers/hotelsController.php";
+require_once "controllers/roomsController.php";
 
 if (empty($id)) {
     header("Location: hotels.php");
@@ -29,6 +30,33 @@ if (empty($hotel_data)) {
         <p><?= $hotel_data['country'] ?></p>
         <p><?= $hotel_data['rating'] ?></p>
     </div>
+
+    <h1>Available Rooms:</h1>
+
+    <table border="1">
+        <thead>
+            <th>Room Number</th>
+            <th>Type</th>
+            <th>Price</th>
+            <th>Capacity</th>
+            <th>Status</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            <?php foreach ($room_data as $key => $value): ?>
+                <tr>
+                    <td><?= $value['room_number'] ?></td>
+                    <td><?= $value['type'] ?></td>
+                    <td><?= $value['price'] ?></td>
+                    <td><?= $value['capacity'] ?></td>
+                    <td><?= $value['status'] ?></td>
+                    <td>
+                        <a href=""></a>
+                    </td>
+                </tr>
+            <?php endforeach ?>
+        </tbody>
+    </table>
 </body>
 
 </html>

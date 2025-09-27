@@ -1,5 +1,5 @@
 <?php
-include "controllers/hotelsController.php";
+require_once "controllers/hotelsController.php";
 
 
 if ($action !== "listHotel") {
