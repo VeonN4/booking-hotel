@@ -89,3 +89,7 @@ session_start();
 </body>
 
 </html>
+
+<?php
+$pentin = isset($status) ? var_dump($status) : null;
+?>
