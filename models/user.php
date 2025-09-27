@@ -11,6 +11,34 @@ function createUser($role_id, $full_name, $email, $password, $phone)
     return $stmt->execute();
 }
 
+function addUserBalance($user_id, $balance)
+{
+    if ($balance < 0) {
+        return 0;
+    }
+
+    $db = getDBConnection();
+    $query = "UPDATE users SET balance = balance + ? WHERE user_id = ?";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("is", $balance, $user_id);
+    return $stmt->execute();
+}
+
+function removeUserBalance($user_id, $balance)
+{
+    if ($balance < 0) {
+        return 0;
+    }
+
+    $db = getDBConnection();
+    $query = "UPDATE users SET balance = balance - ? WHERE user_id = ? AND balance >= ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("isi", $balance, $user_id, $balance);
+    return $stmt->execute();
+}
+
 function getAllUser()
 {
     $db = getDBConnection();
@@ -46,7 +74,7 @@ function getUserById($user_id)
 function updateUserById($user_id, $role_id, $full_name, $email, $password, $phone)
 {
     $db = getDBConnection();
-    $query = "UPDATE siswa SET role_id = ?, full_name = ?, email = ?, password = ?, phone = ? WHERE user_id = ?";
+    $query = "UPDATE users SET role_id = ?, full_name = ?, email = ?, password = ?, phone = ? WHERE user_id = ?";
 
     $stmt = $db->prepare($query);
     $stmt->bind_param("ssssss", $role_id, $full_name, $email, $password, $phone, $user_id);

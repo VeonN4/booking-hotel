@@ -5,10 +5,12 @@ require_once "utils/permission_check.php";
 require_once "controllers/roomsController.php";
 require_once "controllers/paymentController.php";
 
-// if (!isLoggedIn()) {
-//     view("error/create_account_first");
-//     exit;
-// }
+session_start();
+
+if (!isLoggedIn()) {
+    view("error/create_account_first");
+    exit;
+}
 
 if (empty($id)) {
     header("Location: hotels.php");
@@ -45,7 +47,7 @@ $data = $room_data->fetch_assoc();
         </div>
         <div>
             <label for="full_name">Full Name</label>
-            <input type="text" name="full_name" id="full_name">
+            <input type="text" name="full_name" id="full_name" value="<?= $_SESSION['full_name'] ?>">
         </div>
         <div>
             <label for="phone">Phone</label>

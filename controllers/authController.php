@@ -59,7 +59,7 @@ switch ($_GET['action'] ?? null) {
 
         $hash_password = password_hash($password, PASSWORD_BCRYPT);
 
-        createUser("1" , $full_name, $email, $hash_password, $phone);
+        createUser("1", $full_name, $email, $hash_password, $phone);
 
         header("location: login.php");
         exit;
