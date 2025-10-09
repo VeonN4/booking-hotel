@@ -1,6 +1,8 @@
 <?php
 include_once "utils/render_view.php";
 
+session_start();
+
 view('layouts/header');
 view('layouts/nav');
 ?>
@@ -11,9 +13,9 @@ view('layouts/nav');
   <div class="floating-element two"></div>
 
   <div class="hero-container">
-    <h1 class="brand-name">Bookly</h1>
-    <p class="tagline">Thoughtful stays, seamless booking</p>
-    <a href="#login" class="cta-button">Begin Your Journey</a>
+    <h1 class="brand-text text-display-xl font-bold">Bookly</h1>
+    <p class="tagline text-body-1 text-style-italic">Thoughtful stays, seamless booking</p>
+    <a href="<?= !empty($_SESSION) ? "hotels.php" : "register.php" ?>" class="cta-button">Begin Your Journey</a>
   </div>
 
   <div class="scroll-indicator"></div>
@@ -24,11 +26,11 @@ view('layouts/nav');
   <div class="section-container">
     <div class="about-content">
       <div class="about-text">
-        <h2 class="section-title">About Bookly</h2>
-        <p class="section-description">
+        <h2 class="section-title text-display-l font-bold color-accent">About Bookly</h2>
+        <p class="section-description text-sub-1 color-text-light">
           We believe in creating moments of tranquility in your travels. Every stay should be more than just a room—it should be an experience that rejuvenates your spirit.
         </p>
-        <p class="section-paragraph">
+        <p class="section-paragraph text-body-1">
           Founded on principles of mindful hospitality, Bookly connects thoughtful travelers with carefully curated accommodations that prioritize comfort, authenticity, and sustainable practices.
         </p>
         <div class="features-grid">
@@ -47,9 +49,9 @@ view('layouts/nav');
         </div>
       </div>
       <div class="about-visual">
-        <div class="visual-card card-1">Mindful</div>
-        <div class="visual-card card-2">Curated</div>
-        <div class="visual-card card-3">Sustainable</div>
+        <div class="about-visual-card about-card-1">Mindful</div>
+        <div class="about-visual-card about-card-2">Curated</div>
+        <div class="about-visual-card about-card-3">Sustainable</div>
       </div>
     </div>
   </div>
@@ -58,38 +60,38 @@ view('layouts/nav');
 <!-- Destinations Section -->
 <section id="destinations" class="section destinations-section">
   <div class="section-container">
-    <h2 class="section-title centered">Featured Destinations</h2>
-    <p class="section-subtitle">Discover spaces that inspire and restore</p>
-    <div class="destinations-grid">
-      <div class="destination-card">
-        <div class="destination-image">
-          <span class="destination-name">Kyoto</span>
+    <h2 class="section-title text-align-center color-accent font-bold text-display-l">Featured Destinations</h2>
+    <p class="section-subtitle text-sub-1">Discover spaces that inspire and restore</p>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-image">
+          <span class="card-name">Kyoto</span>
         </div>
-        <div class="destination-info">
+        <div class="card-info">
           <p>Traditional ryokans and modern comfort</p>
         </div>
       </div>
-      <div class="destination-card">
-        <div class="destination-image">
-          <span class="destination-name">Santorini</span>
+      <div class="card">
+        <div class="card-image">
+          <span class="card-name">Santorini</span>
         </div>
-        <div class="destination-info">
+        <div class="card-info">
           <p>Cliffside retreats with endless views</p>
         </div>
       </div>
-      <div class="destination-card">
-        <div class="destination-image">
-          <span class="destination-name">Bali</span>
+      <div class="card">
+        <div class="card-image">
+          <span class="card-name">Bali</span>
         </div>
-        <div class="destination-info">
+        <div class="card-info">
           <p>Jungle villas and beachfront serenity</p>
         </div>
       </div>
-      <div class="destination-card">
-        <div class="destination-image">
-          <span class="destination-name">Tuscany</span>
+      <div class="card">
+        <div class="card-image">
+          <span class="card-name">Tuscany</span>
         </div>
-        <div class="destination-info">
+        <div class="card-info">
           <p>Rustic farmhouses in rolling hills</p>
         </div>
       </div>
@@ -102,7 +104,7 @@ view('layouts/nav');
   <div class="section-container">
     <div class="contact-content">
       <div class="contact-info">
-        <h2 class="section-title">Get in Touch</h2>
+        <h2 class="section-title font-bold text-display-l color-accent">Get in Touch</h2>
         <p class="section-description">
           Have questions about your next stay? We're here to help you find the perfect retreat.
         </p>
