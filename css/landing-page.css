@@ -1,0 +1,224 @@
+.hero-container {
+    text-align: center;
+    max-width: 600px;
+    animation: fadeInUp 1s ease;
+}
+
+.brand-text {
+    margin-bottom: 1rem;
+    background: var(--bookly-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+}
+
+.tagline {
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeIn 1s ease 0.5s forwards;
+}
+
+/* About Section */
+
+.about-section {
+  background: white;
+  border-top: 1px solid var(--bookly-border);
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.feature-item {
+  text-align: center;
+}
+
+.feature-number {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 600;
+  background: var(--bookly-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+}
+
+.feature-label {
+  font-size: 0.9rem;
+  color: var(--bookly-text-light);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.about-visual {
+  position: relative;
+  height: 400px;
+}
+
+.about-visual-card {
+  position: absolute;
+  padding: 2rem;
+  border-radius: 20px;
+  font-family: "Crimson Text", serif;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 40px rgba(212, 165, 116, 0.2);
+  transition: all 0.3s ease;
+}
+
+.about-visual-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 50px rgba(212, 165, 116, 0.3);
+}
+
+.about-card-1 {
+  background: var(--bookly-gradient);
+  color: white;
+  width: 200px;
+  height: 120px;
+  top: 20px;
+  left: 20px;
+  z-index: 3;
+}
+
+.about-card-2 {
+  background: white;
+  border: 2px solid var(--bookly-border);
+  color: var(--bookly-accent);
+  width: 180px;
+  height: 100px;
+  top: 100px;
+  right: 40px;
+  z-index: 2;
+}
+
+.about-card-3 {
+  background: var(--bookly-hover);
+  color: var(--bookly-secondary);
+  width: 220px;
+  height: 110px;
+  bottom: 40px;
+  left: 80px;
+  z-index: 1;
+}
+
+/* Destinations Section */
+.destinations-section {
+  background: var(--bookly-bg);
+}
+
+/* Contact Section */
+.contact-section {
+  background: white;
+  border-top: 1px solid var(--bookly-border);
+}
+
+.contact-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+.contact-methods {
+  margin-top: 2rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.contact-icon {
+  width: 50px;
+  height: 50px;
+  background: var(--bookly-hover);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--bookly-primary);
+}
+
+.contact-item h4 {
+  font-size: 1rem;
+  color: var(--bookly-accent);
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+}
+
+.contact-item p {
+  color: var(--bookly-text);
+  font-size: 1rem;
+}
+
+.contact-form {
+  background: var(--bookly-hover);
+  padding: 2.5rem;
+  border-radius: 20px;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid var(--bookly-border);
+  border-radius: 10px;
+  font-size: 1rem;
+  background: white;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--bookly-primary);
+  box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.1);
+}
+
+.form-input::placeholder {
+  color: var(--bookly-text-light);
+}
+
+/* Decorative Elements */
+.floating-element {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+      rgba(212, 165, 116, 0.1) 0%,
+      transparent 70%);
+  pointer-events: none;
+}
+
+.floating-element.one {
+  top: 10%;
+  left: -150px;
+  animation: float 20s ease-in-out infinite;
+}
+
+.floating-element.two {
+  bottom: 10%;
+  right: -150px;
+  animation: float 20s ease-in-out infinite reverse;
+}

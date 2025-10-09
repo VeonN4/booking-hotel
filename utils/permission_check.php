@@ -10,7 +10,7 @@ function isRole($role) {
 }
 
 function isLoggedIn() {
-    if (isset($_SESSION)) {
+    if (!empty($_SESSION)) {
         return true;
     }
     return false;

@@ -1,7 +1,7 @@
 <?php
-include dirname(__DIR__) . "/models/user.php";
-
 session_start();
+include_once dirname(__DIR__) . "/utils/permission_check.php";
+include_once dirname(__DIR__) . "/models/user.php";
 
 switch ($_GET['action'] ?? null) {
     case 'signin':
@@ -18,10 +18,15 @@ switch ($_GET['action'] ?? null) {
             break;
         }
 
-        $user = getUserByEmail($email)->fetch_assoc();
+        $user = getUserByEmail($email)->fetch_assoc() ?? null;
+
+        if ($user === NULL) {
+            header("Location: index.php");
+        }
+
 
         if (password_verify($password, $user['password'])) {
-            session_regenerate_id(true);
+            // session_regenerate_id(true);
             $_SESSION['user_id'] = $user['user_id'];
             $_SESSION['full_name'] = $user['full_name'];
 
@@ -65,4 +70,15 @@ switch ($_GET['action'] ?? null) {
         exit;
 
         break;
+    case 'logout':
+        session_destroy();
+        session_unset();
+        
+        header("location: index.php");
+
+        exit;
+}
+
+if (isLoggedIn()) {
+    header("Location: index.php");
 }

@@ -1,95 +1,155 @@
 <?php
+include_once "utils/render_view.php";
+
 session_start();
+
+view('layouts/header');
+view('layouts/nav');
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
+<!-- Main Content -->
+<main>
+  <div class="floating-element one"></div>
+  <div class="floating-element two"></div>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bookly</title>
-  <link rel="stylesheet" href="css/bookly-app.css">
-</head>
+  <div class="hero-container">
+    <h1 class="brand-text text-display-xl font-bold">Bookly</h1>
+    <p class="tagline text-body-1 text-style-italic">Thoughtful stays, seamless booking</p>
+    <a href="<?= !empty($_SESSION) ? "hotels.php" : "register.php" ?>" class="cta-button">Begin Your Journey</a>
+  </div>
 
-<body>
-  <!-- Navigation -->
-  <nav>
-    <div class="nav-container">
-      <div class="logo">Brookly</div>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#destinations">Destinations</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
+  <div class="scroll-indicator"></div>
+</main>
 
-  <!-- Main Content -->
-  <main>
-    <div class="hero-container fadeInUp">
-      <h1 class="brand-name"><?= htmlspecialchars($_SESSION['full_name'] ?? "Brookly") ?></h1>
-      <p class="tagline fadeIn-05">Thoughtful stays, seamless booking</p>
-      <a href="register.php" class="cta-button fadeIn-08">Begin Your Journey</a>
-      <!-- <?= var_dump($_SESSION) ?> -->
-    </div>
-
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <div class="footer-container">
-      <div class="footer-section">
-        <a href="#privacy" class="footer-link">Privacy</a>
-        <a href="#terms" class="footer-link">Terms</a>
-        <a href="#help" class="footer-link">Help</a>
+<!-- About Section -->
+<section id="about" class="section about-section">
+  <div class="section-container">
+    <div class="about-content">
+      <div class="about-text">
+        <h2 class="section-title text-display-l font-bold color-accent">About Bookly</h2>
+        <p class="section-description text-sub-1 color-text-light">
+          We believe in creating moments of tranquility in your travels. Every stay should be more than just a room—it should be an experience that rejuvenates your spirit.
+        </p>
+        <p class="section-paragraph text-body-1">
+          Founded on principles of mindful hospitality, Bookly connects thoughtful travelers with carefully curated accommodations that prioritize comfort, authenticity, and sustainable practices.
+        </p>
+        <div class="features-grid">
+          <div class="feature-item">
+            <span class="feature-number">500+</span>
+            <span class="feature-label">Curated Properties</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-number">50+</span>
+            <span class="feature-label">Countries</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-number">100k+</span>
+            <span class="feature-label">Happy Travelers</span>
+          </div>
+        </div>
       </div>
-      <div class="copyright">
-        © 2025 Brookly. Crafted with intention.
+      <div class="about-visual">
+        <div class="about-visual-card about-card-1">Mindful</div>
+        <div class="about-visual-card about-card-2">Curated</div>
+        <div class="about-visual-card about-card-3">Sustainable</div>
       </div>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <script>
-    // Smooth navbar background on scroll
-    window.addEventListener('scroll', () => {
-      const nav = document.querySelector('nav');
-      if (window.scrollY > 50) {
-        nav.style.boxShadow = '0 2px 20px rgba(212, 165, 116, 0.1)';
-      } else {
-        nav.style.boxShadow = 'none';
-      }
-    });
+<!-- Destinations Section -->
+<section id="destinations" class="section destinations-section">
+  <div class="section-container">
+    <h2 class="section-title text-align-center color-accent font-bold text-display-l">Featured Destinations</h2>
+    <p class="section-subtitle text-sub-1">Discover spaces that inspire and restore</p>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-image">
+          <span class="card-name">Kyoto</span>
+        </div>
+        <div class="card-info">
+          <p>Traditional ryokans and modern comfort</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-image">
+          <span class="card-name">Santorini</span>
+        </div>
+        <div class="card-info">
+          <p>Cliffside retreats with endless views</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-image">
+          <span class="card-name">Bali</span>
+        </div>
+        <div class="card-info">
+          <p>Jungle villas and beachfront serenity</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-image">
+          <span class="card-name">Tuscany</span>
+        </div>
+        <div class="card-info">
+          <p>Rustic farmhouses in rolling hills</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    // Add subtle parallax effect to floating elements
-    window.addEventListener('mousemove', (e) => {
-      const floatingElements = document.querySelectorAll('.floating-element');
-      const x = e.clientX / window.innerWidth;
-      const y = e.clientY / window.innerHeight;
-
-      floatingElements.forEach((el, index) => {
-        const speed = (index + 1) * 20;
-        el.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
-      });
-    });
-
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
-  </script>
-</body>
-
-</html>
+<!-- Contact Section -->
+<section id="contact" class="section contact-section">
+  <div class="section-container">
+    <div class="contact-content">
+      <div class="contact-info">
+        <h2 class="section-title font-bold text-display-l color-accent">Get in Touch</h2>
+        <p class="section-description">
+          Have questions about your next stay? We're here to help you find the perfect retreat.
+        </p>
+        <div class="contact-methods">
+          <div class="contact-item">
+            <span class="contact-icon">✉</span>
+            <div>
+              <h4>Email</h4>
+              <p>support@bookly.com</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">☎</span>
+            <div>
+              <h4>Phone</h4>
+              <p>+1 (555) 123-4567</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">⌚</span>
+            <div>
+              <h4>Hours</h4>
+              <p>24/7 Support Available</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <form>
+          <div class="form-group">
+            <input type="text" placeholder="Your Name" class="form-input">
+          </div>
+          <div class="form-group">
+            <input type="email" placeholder="Your Email" class="form-input">
+          </div>
+          <div class="form-group">
+            <textarea placeholder="Your Message" rows="5" class="form-input"></textarea>
+          </div>
+          <button type="submit" class="cta-button">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
 
 <?php
-$pentin = isset($status) ? var_dump($status) : null;
+view('layouts/footer');
 ?>

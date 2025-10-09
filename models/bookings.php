@@ -32,6 +32,17 @@ function getBookingById($booking_id)
     return $stmt->get_result();
 }
 
+function getBookingByUserId($user_id)
+{
+    $db = getDBConnection();
+    $query = "SELECT * FROM bookings WHERE user_id = ?";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("s", $user_id);
+    $stmt->execute();
+    return $stmt->get_result();
+}
+
 function updateBookingById($booking_id, $user_id, $room_id, $check_in, $check_out, $status, $total_price)
 {
     $db = getDBConnection();
